@@ -1,0 +1,10 @@
+<% @result.each do |res| %>
+  <h1>Source: <a href=<%= res.link %>><%= res.link %></a></h1>
+  <h2>Total words: <%= res.total_words %></h2>
+  <h2>Time spent on counting words: <%= res.time_spent.round(10) %> sec.</h2>
+  <h2>Histogram for <span style="color: green"><%= res.hash.keys.count %></span> most common words: </h2>
+  <%= column_chart res.hash %>
+<% end %>
+<h1>Combined histogram for <span style="color: green"><%= @combined.hash.keys.size %></span>
+  most common words in <span style="color: red"><%= @result.count %></span> wikipedia articles: </h1>
+<%= column_chart @combined.hash %>
